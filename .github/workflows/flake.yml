@@ -1,4 +1,4 @@
-name: MyPy Type Checking and Merge
+name: Flake8 code Checking and Merge
 on:
   push:
     branches:
@@ -23,11 +23,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install mypy
+          pip install flake8
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
-      - name: Run MyPy
-        run: mypy ./*.py wemod
+      - name: Run Flake8
+        run: flake8 ./*.py wemod
 
       - name: Merge dev to main
         if: success()
